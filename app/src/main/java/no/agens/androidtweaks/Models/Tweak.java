@@ -1,4 +1,4 @@
-package no.agens.androidtweaks;
+package no.agens.androidtweaks.Models;
 
 public class Tweak {
     private String name;

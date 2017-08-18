@@ -13,6 +13,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import no.agens.androidtweaks.Models.Collection;
+import no.agens.androidtweaks.Models.Group;
+import no.agens.androidtweaks.Models.Tweak;
+
 
 public class CustomRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int TYPE_HEADER = 0;

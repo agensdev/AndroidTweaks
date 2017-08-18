@@ -1,4 +1,4 @@
-package no.agens.androidtweaks;
+package no.agens.androidtweaks.Models;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class Collection {
         Integer countOfTweaks = 0;
 
         for (Group group : groups) {
-            countOfTweaks += group.getCounOfTweaks();
+            countOfTweaks += group.getCountOfTweaks();
         }
 
         return countOfTweaks;

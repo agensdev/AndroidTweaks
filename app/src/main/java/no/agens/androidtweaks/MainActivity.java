@@ -13,6 +13,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import no.agens.androidtweaks.Models.Collection;
+import no.agens.androidtweaks.Models.Group;
+import no.agens.androidtweaks.Models.Tweak;
+import no.agens.androidtweaks.Models.TweakStore;
+
 public class MainActivity extends AppCompatActivity {
     private static String COLLECTION_ID = "collectionId";
     private List<Collection> collections;

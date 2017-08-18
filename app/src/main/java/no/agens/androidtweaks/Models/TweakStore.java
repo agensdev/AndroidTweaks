@@ -1,4 +1,4 @@
-package no.agens.androidtweaks;
+package no.agens.androidtweaks.Models;
 
 import java.util.ArrayList;
 import java.util.List;
