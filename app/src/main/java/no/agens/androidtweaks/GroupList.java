@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
 public class GroupList extends AppCompatActivity {
     private static String COLLECTION_ID = "collectionId";

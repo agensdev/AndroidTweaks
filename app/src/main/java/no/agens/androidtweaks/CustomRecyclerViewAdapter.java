@@ -7,8 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,8 +48,8 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
             TextView tweakTextView = (TextView) view.findViewById(R.id.tweak_name_textView);
             tweakTextView.setText(tweakName);
 
-            ToggleButton toggleButton = (ToggleButton) view.findViewById(R.id.toggle_button);
-            toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            Switch switchButton = (Switch) view.findViewById(R.id.switch_button);
+            switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
