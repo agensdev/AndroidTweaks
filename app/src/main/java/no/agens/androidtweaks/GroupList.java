@@ -33,7 +33,7 @@ public class GroupList extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerView.Adapter adapter = new CustomRecyclerViewAdapter(this, collection);
+        RecyclerView.Adapter adapter = new TweaksAdapter(this, collection);
         recyclerView.setAdapter(adapter);
     }
 }

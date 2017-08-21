@@ -1,4 +1,4 @@
-package no.agens.androidtweaks;
+package no.agens.androidtweakslibrary.Adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -13,18 +13,19 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import no.agens.androidtweaks.Models.Collection;
-import no.agens.androidtweaks.Models.Group;
-import no.agens.androidtweaks.Models.Tweak;
+import no.agens.androidtweakslibrary.Models.Collection;
+import no.agens.androidtweakslibrary.Models.Group;
+import no.agens.androidtweakslibrary.Models.Tweak;
+import no.agens.androidtweakslibrary.R;
 
 
-public class CustomRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class TweaksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_ITEM = 1;
     private Context context;
     private List<Group> groups = new ArrayList<>();
 
-    public CustomRecyclerViewAdapter(Context context, Collection collection) {
+    public TweaksAdapter(Context context, Collection collection) {
         this.context = context;
         this.groups = collection.getGroups();
     }
