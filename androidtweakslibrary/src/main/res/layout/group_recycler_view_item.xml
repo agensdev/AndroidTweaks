@@ -9,6 +9,8 @@
         android:id="@+id/group_name_textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:minHeight="56dp"
+        android:gravity="center_vertical"
         android:padding="10dp"
         android:background="@color/lightGrey"
         android:textSize="16sp"/>
@@ -17,7 +19,6 @@
         android:id="@+id/tweaks_linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"/>
 
-    </LinearLayout>
 </LinearLayout>

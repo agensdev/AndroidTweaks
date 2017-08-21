@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AndroidTweaks.iml" filepath="$PROJECT_DIR$/AndroidTweaks.iml" />
+      <module fileurl="file://$PROJECT_DIR$/androidtweakslibrary/androidtweakslibrary.iml" filepath="$PROJECT_DIR$/androidtweakslibrary/androidtweakslibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

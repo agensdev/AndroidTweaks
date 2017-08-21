@@ -1,6 +1,4 @@
-package no.agens.androidtweaks;
-
-import no.agens.androidtweaks.Models.Tweak;
+package no.agens.androidtweakslibrary.Models;
 
 public class TweakBoolean extends Tweak {
 

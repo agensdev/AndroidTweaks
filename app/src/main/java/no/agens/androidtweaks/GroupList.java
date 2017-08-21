@@ -6,8 +6,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
-import no.agens.androidtweaks.Models.Collection;
-import no.agens.androidtweaks.Models.TweakStore;
+import no.agens.androidtweakslibrary.Adapter.TweaksAdapter;
+import no.agens.androidtweakslibrary.Models.Collection;
+import no.agens.androidtweakslibrary.Models.TweakStore;
 
 public class GroupList extends AppCompatActivity {
     private static String COLLECTION_ID = "collectionId";

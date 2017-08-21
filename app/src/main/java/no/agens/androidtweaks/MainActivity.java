@@ -13,10 +13,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import no.agens.androidtweaks.Models.Collection;
-import no.agens.androidtweaks.Models.Group;
-import no.agens.androidtweaks.Models.Tweak;
-import no.agens.androidtweaks.Models.TweakStore;
+import no.agens.androidtweakslibrary.Models.Collection;
+import no.agens.androidtweakslibrary.Models.Group;
+import no.agens.androidtweakslibrary.Models.Tweak;
+import no.agens.androidtweakslibrary.Models.TweakStore;
 
 public class MainActivity extends AppCompatActivity {
     private static String COLLECTION_ID = "collectionId";
