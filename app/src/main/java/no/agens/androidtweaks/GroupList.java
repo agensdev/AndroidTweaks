@@ -11,19 +11,23 @@ import no.agens.androidtweakslibrary.Models.Collection;
 import no.agens.androidtweakslibrary.Models.TweakStore;
 
 public class GroupList extends AppCompatActivity {
+    private static String TWEAK_STORE_NAME = "tweakStoreName";
     private static String COLLECTION_ID = "collectionId";
-    private int collectionId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_groups);
 
+        String tweakStoreName = "";
+        int collectionId = 0;
+
         if (getIntent().getExtras() != null) {
+            tweakStoreName = getIntent().getExtras().getString(TWEAK_STORE_NAME);
             collectionId = getIntent().getExtras().getInt(COLLECTION_ID);
         }
 
-        TweakStore tweakStore = TweakStore.getInstance();
+        TweakStore tweakStore = TweakStore.getInstance(this, tweakStoreName);
         Collection collection = tweakStore.getCollections().get(collectionId);
 
         TextView collectionNameTV = (TextView) findViewById(R.id.collection_name_textView);
@@ -33,7 +37,7 @@ public class GroupList extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerView.Adapter adapter = new TweaksAdapter(this, collection);
+        RecyclerView.Adapter adapter = new TweaksAdapter(this, collection, tweakStore);
         recyclerView.setAdapter(adapter);
     }
 }

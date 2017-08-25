@@ -1,10 +1,16 @@
 package no.agens.androidtweakslibrary.Models;
 
+import android.support.annotation.NonNull;
+
 import java.util.List;
 
-public class Collection {
+public class Collection implements Comparable<Collection> {
     private String name;
     private List<Group> groups;
+
+    public Collection(String name) {
+        this.name = name;
+    }
 
     public Collection(String name, List<Group> groups) {
         this.name = name;
@@ -27,5 +33,14 @@ public class Collection {
         }
 
         return countOfTweaks;
+    }
+
+    public void addGroups(List<Group> groups) {
+        this.groups = groups;
+    }
+
+    @Override
+    public int compareTo(@NonNull Collection collection) {
+        return name.compareToIgnoreCase(collection.getName());
     }
 }

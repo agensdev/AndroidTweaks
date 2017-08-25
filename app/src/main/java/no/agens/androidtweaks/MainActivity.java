@@ -14,48 +14,46 @@ import java.util.HashMap;
 import java.util.List;
 
 import no.agens.androidtweakslibrary.Models.Collection;
-import no.agens.androidtweakslibrary.Models.Group;
 import no.agens.androidtweakslibrary.Models.Tweak;
+import no.agens.androidtweakslibrary.Models.TweakBoolean;
 import no.agens.androidtweakslibrary.Models.TweakStore;
 
 public class MainActivity extends AppCompatActivity {
+    private static String TWEAK_STORE_NAME = "tweakStoreName";
     private static String COLLECTION_ID = "collectionId";
     private List<Collection> collections;
+    private TweakStore tweakStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Tweak tweak1 = new Tweak("Dark");
-        Tweak tweak2 = new Tweak("Big");
-        Tweak tweak3 = new Tweak("Small");
-        Tweak tweak4 = new Tweak("Medium");
-        Tweak tweak5 = new Tweak("Light");
-        List<Tweak> tweaks1 = new ArrayList<>();
-        tweaks1.add(tweak1);
-        tweaks1.add(tweak5);
-        List<Tweak> tweaks2 = new ArrayList<>();
-        tweaks2.add(tweak2);
-        tweaks2.add(tweak3);
-        tweaks2.add(tweak4);
-        List<Tweak> tweaks3 = new ArrayList<>();
-        Group group1 = new Group("Theme", tweaks1);
-        Group group2 = new Group("Fonts", tweaks2);
-        Group group3 = new Group("Other", tweaks3);
-        List<Group> groups = new ArrayList<>();
-        groups.add(group1);
-        groups.add(group2);
-        groups.add(group3);
-        Collection collection = new Collection("Styling", groups);
-        List<Collection> collectionsList = new ArrayList<>();
-        collectionsList.add(collection);
-        final TweakStore tweakStore = TweakStore.getInstance();
-        tweakStore.setName("Tweak Store");
-        tweakStore.setCollections(collectionsList);
+        Tweak tweak1 = new TweakBoolean("Styling", "Theme", "Dark", false);
+        Tweak tweak2 = new TweakBoolean("Styling", "Fonts", "Big", true);
+        Tweak tweak3 = new TweakBoolean("Styling", "Fonts", "Small", false);
+        Tweak tweak4 = new TweakBoolean("Styling", "Fonts", "Medium", false);
+        Tweak tweak5 = new TweakBoolean("Styling", "Theme", "Light", false);
+        Tweak tweak6 = new TweakBoolean("Drawing", "Color", "Pink", false);
+        Tweak tweak7 = new TweakBoolean("Styling", "Theme", "Custom", false);
+        Tweak tweak8 = new TweakBoolean("Drawing", "Color", "Black", false);
+
+        List<Tweak> tweaks = new ArrayList<>();
+        tweaks.add(tweak1);
+        tweaks.add(tweak2);
+        tweaks.add(tweak3);
+        tweaks.add(tweak4);
+        tweaks.add(tweak5);
+        tweaks.add(tweak6);
+        tweaks.add(tweak7);
+        tweaks.add(tweak8);
+
+        tweakStore = TweakStore.getInstance(this, "Tweaks");
+        tweakStore.setTweaks(tweaks);
+
 
         TextView tweakStoreNameTV = (TextView) findViewById(R.id.tweaksStore_name_textView);
-        tweakStoreNameTV.setText(tweakStore.getName());
+        tweakStoreNameTV.setText(tweakStore.getTweakStoreName());
 
         collections = tweakStore.getCollections();
         ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
@@ -78,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
                 Intent intent = new Intent(getApplicationContext(), GroupList.class);
+                intent.putExtra(TWEAK_STORE_NAME, tweakStore.getTweakStoreName());
                 intent.putExtra(COLLECTION_ID, i);
                 startActivity(intent);
             }
