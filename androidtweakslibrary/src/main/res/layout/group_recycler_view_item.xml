@@ -3,6 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/lightGrey"
     android:id="@+id/recyclerView_layout">
 
     <TextView
@@ -12,13 +13,18 @@
         android:minHeight="56dp"
         android:gravity="center_vertical"
         android:padding="10dp"
-        android:background="@color/lightGrey"
         android:textSize="16sp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/boarderGrey"/>
 
     <LinearLayout
         android:id="@+id/tweaks_linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginBottom="30dp"/>
 
 </LinearLayout>

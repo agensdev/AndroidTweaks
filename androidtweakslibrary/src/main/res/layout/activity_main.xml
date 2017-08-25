@@ -19,7 +19,6 @@
         android:layout_height="1dp"
         android:background="@color/lightGrey"/>
 
-
     <ListView
         android:id="@+id/tweak_store_ListView"
         android:layout_width="match_parent"
