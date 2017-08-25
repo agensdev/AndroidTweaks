@@ -16,18 +16,20 @@ import java.util.List;
 import no.agens.androidtweakslibrary.Models.Collection;
 import no.agens.androidtweakslibrary.Models.Group;
 import no.agens.androidtweakslibrary.Models.Tweak;
+import no.agens.androidtweakslibrary.Models.TweakBoolean;
+import no.agens.androidtweakslibrary.Models.TweakStore;
 import no.agens.androidtweakslibrary.R;
 
 
 public class TweaksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private static final int TYPE_HEADER = 0;
-    private static final int TYPE_ITEM = 1;
     private Context context;
     private List<Group> groups = new ArrayList<>();
+    private TweakStore tweakStore;
 
-    public TweaksAdapter(Context context, Collection collection) {
+    public TweaksAdapter(Context context, Collection collection, TweakStore tweakStore) {
         this.context = context;
         this.groups = collection.getGroups();
+        this.tweakStore = tweakStore;
     }
 
     @Override
@@ -39,29 +41,36 @@ public class TweaksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         String groupName = groups.get(position).getName();
-        ((ViewHolder) holder).textView.setText(groupName);
+        ((ViewHolder) holder).groupNameTextView.setText(groupName);
 
         List<Tweak> tweaks = groups.get(position).getTweaks();
 
-        ((ViewHolder) holder).linearLayout.removeAllViews();
+        ((ViewHolder) holder).tweaksLinearLayout.removeAllViews();
 
         for (int i = 0; i < tweaks.size(); i++) {
-            String tweakName = tweaks.get(i).getName();
+            final Tweak tweak = tweaks.get(i);
+            String tweakName = tweak.getName();
 
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View view = inflater.inflate(R.layout.tweak_item, null);
-            TextView tweakTextView = (TextView) view.findViewById(R.id.tweak_name_textView);
-            tweakTextView.setText(tweakName);
+            if (tweak instanceof TweakBoolean) {
+                LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                View view = inflater.inflate(R.layout.tweak_item, null);
+                TextView tweakNameTextView = (TextView) view.findViewById(R.id.tweak_name_textView);
+                tweakNameTextView.setText(tweakName);
 
-            Switch switchButton = (Switch) view.findViewById(R.id.switch_button);
-            switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                Switch switchButton = (Switch) view.findViewById(R.id.switch_button);
 
-                }
-            });
+                Boolean tweakBooleanValue = tweakStore.getValue((TweakBoolean) tweak);
+                switchButton.setChecked(tweakBooleanValue);
 
-            ((ViewHolder) holder).linearLayout.addView(view);
+                switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                        tweakStore.setValue((TweakBoolean) tweak, b);
+                    }
+                });
+
+                ((ViewHolder) holder).tweaksLinearLayout.addView(view);
+            }
         }
     }
 
@@ -70,27 +79,16 @@ public class TweaksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         return groups.size();
     }
 
-    @Override
-    public int getItemViewType(int position) {
-        super.getItemViewType(position);
-
-        if (position == TYPE_HEADER) {
-            return TYPE_HEADER;
-        } else {
-            return TYPE_ITEM;
-        }
-    }
-
 
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        LinearLayout linearLayout;
-        TextView textView;
+        LinearLayout tweaksLinearLayout;
+        TextView groupNameTextView;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            linearLayout = (LinearLayout) itemView.findViewById(R.id.tweaks_linearLayout);
-            textView = (TextView) itemView.findViewById(R.id.group_name_textView);
+            tweaksLinearLayout = (LinearLayout) itemView.findViewById(R.id.tweaks_linearLayout);
+            groupNameTextView = (TextView) itemView.findViewById(R.id.group_name_textView);
         }
     }
 }
