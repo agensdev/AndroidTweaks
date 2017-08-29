@@ -1,8 +1,8 @@
 apply plugin: 'com.android.library'
 
 ext {
-    bintrayRepo = 'androidtweaklibrary'
-    bintrayName = 'androidtweaklibrary'
+    bintrayRepo = 'androidtweakslibrary'
+    bintrayName = 'blashca'
 
     publishedGroupId = 'no.agens'
     libraryName = 'androidtweakslibrary'
