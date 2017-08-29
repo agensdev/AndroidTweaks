@@ -41,8 +41,6 @@ public class TweakStore {
         return sharedPreferences.getBoolean(getTweakBooleanKey(tweakBoolean), tweakBoolean.getDefaultValue());
     }
 
-    }
-
     public String getTweakStoreName() {
         return tweakStoreName;
     }
