@@ -1,6 +1,29 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
-group = 'com.github.blashca'
+
+ext {
+    bintrayRepo = 'androidtweaklibrary'
+    bintrayName = 'androidtweaklibrary'
+
+    publishedGroupId = 'no.agens'
+    libraryName = 'androidtweakslibrary'
+    artifact = 'androidtweakslibrary'
+
+    libraryDescription = 'A library to tweak app UI.'
+
+    siteUrl = 'https://github.com/agensdev/AndroidTweaks'
+    gitUrl = 'https://github.com/agensdev/AndroidTweaks.git'
+
+    libraryVersion = '1.0.0'
+
+    developerId = '#9930565'
+    developerName = 'blashca'
+    developerEmail = 'blanka@agens.no'
+    organization = 'agensdev'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
 
 android {
     compileSdkVersion 25
@@ -33,3 +56,6 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.3.1'
     testCompile 'junit:junit:4.12'
 }
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
