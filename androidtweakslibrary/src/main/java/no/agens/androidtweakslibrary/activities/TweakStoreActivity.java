@@ -77,7 +77,7 @@ public class TweakStoreActivity extends AppCompatActivity {
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
-                Intent intent = new Intent(getApplicationContext(), Collection.class);
+                Intent intent = new Intent(getApplicationContext(), CollectionActvity.class);
                 intent.putExtra(TWEAK_STORE_NAME, tweakStore.getTweakStoreName());
                 intent.putExtra(COLLECTION_ID, i);
                 startActivity(intent);
