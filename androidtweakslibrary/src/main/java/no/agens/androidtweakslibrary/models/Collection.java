@@ -1,4 +1,4 @@
-package no.agens.androidtweakslibrary.lowercase.models;
+package no.agens.androidtweakslibrary.models;
 
 import android.support.annotation.NonNull;
 

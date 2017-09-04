@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import no.agens.androidtweakslibrary.lowercase.activities.TweakStoreActivity;
+import no.agens.androidtweakslibrary.activities.TweakStoreActivity;
 
 //import no.agens.androidtweakslibrary.Interface.TweakBinding;
 

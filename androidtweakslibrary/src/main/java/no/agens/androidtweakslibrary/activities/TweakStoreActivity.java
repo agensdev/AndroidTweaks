@@ -1,4 +1,4 @@
-package no.agens.androidtweakslibrary.lowercase.activities;
+package no.agens.androidtweakslibrary.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,10 +13,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import no.agens.androidtweakslibrary.lowercase.models.Collection;
-import no.agens.androidtweakslibrary.lowercase.models.Tweak;
-import no.agens.androidtweakslibrary.lowercase.models.TweakBoolean;
-import no.agens.androidtweakslibrary.lowercase.models.TweakStore;
+import no.agens.androidtweakslibrary.models.Collection;
+import no.agens.androidtweakslibrary.models.Tweak;
+import no.agens.androidtweakslibrary.models.TweakBoolean;
+import no.agens.androidtweakslibrary.models.TweakStore;
 import no.agens.androidtweakslibrary.R;
 
 

@@ -1,4 +1,4 @@
-package no.agens.androidtweakslibrary.lowercase.activities;
+package no.agens.androidtweakslibrary.activities;
 
 
 import android.os.Bundle;
@@ -7,9 +7,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
-import no.agens.androidtweakslibrary.lowercase.adapter.TweaksAdapter;
-import no.agens.androidtweakslibrary.lowercase.models.Collection;
-import no.agens.androidtweakslibrary.lowercase.models.TweakStore;
+import no.agens.androidtweakslibrary.adapter.TweaksAdapter;
+import no.agens.androidtweakslibrary.models.Collection;
+import no.agens.androidtweakslibrary.models.TweakStore;
 import no.agens.androidtweakslibrary.R;
 
 public class CollectionActvity extends AppCompatActivity {
