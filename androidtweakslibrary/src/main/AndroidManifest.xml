@@ -5,17 +5,17 @@
     <application android:allowBackup="true" android:label="@string/app_name"
         android:supportsRtl="true">
         <activity
-            android:name="no.agens.androidtweakslibrary.Activities.TweakStoreActivity"
+            android:name="no.agens.androidtweakslibrary.lowercase.activities.TweakStoreActivity"
             android:screenOrientation="portrait"
             android:label="@string/app_name"
             android:launchMode="singleInstance"/>
 
         <activity
-            android:name="no.agens.androidtweakslibrary.Activities.CollectionActvity"
+            android:name="no.agens.androidtweakslibrary.lowercase.activities.CollectionActvity"
             android:screenOrientation="portrait"
             android:label="@string/app_name"
             android:launchMode="singleInstance"
-            android:parentActivityName=".Activities.TweakStoreActivity"/>
+            android:parentActivityName=".lowercase.activities.TweakStoreActivity"/>
 
     </application>
 

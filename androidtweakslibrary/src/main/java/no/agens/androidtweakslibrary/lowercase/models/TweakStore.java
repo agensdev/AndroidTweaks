@@ -1,4 +1,4 @@
-package no.agens.androidtweakslibrary.Models;
+package no.agens.androidtweakslibrary.lowercase.models;
 
 import android.content.Context;
 import android.content.SharedPreferences;

@@ -1,4 +1,4 @@
-package no.agens.androidtweakslibrary.Models;
+package no.agens.androidtweakslibrary.lowercase.models;
 
 public class TweakBoolean extends Tweak {
     private Boolean defaultValue;

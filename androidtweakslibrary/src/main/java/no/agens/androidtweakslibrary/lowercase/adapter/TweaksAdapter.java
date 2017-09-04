@@ -1,4 +1,4 @@
-package no.agens.androidtweakslibrary.Adapter;
+package no.agens.androidtweakslibrary.lowercase.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -13,11 +13,11 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import no.agens.androidtweakslibrary.Models.Collection;
-import no.agens.androidtweakslibrary.Models.Group;
-import no.agens.androidtweakslibrary.Models.Tweak;
-import no.agens.androidtweakslibrary.Models.TweakBoolean;
-import no.agens.androidtweakslibrary.Models.TweakStore;
+import no.agens.androidtweakslibrary.lowercase.models.Collection;
+import no.agens.androidtweakslibrary.lowercase.models.Group;
+import no.agens.androidtweakslibrary.lowercase.models.Tweak;
+import no.agens.androidtweakslibrary.lowercase.models.TweakBoolean;
+import no.agens.androidtweakslibrary.lowercase.models.TweakStore;
 import no.agens.androidtweakslibrary.R;
 
 
