@@ -17,6 +17,7 @@ public class TweakStore {
     public static final String SHARED_PREFERENCES = "sharedPreferences";
     private static TweakStore tweakStore;
     private final String tweakStoreName;
+    private Boolean isEnabled = false;
     private final List<Collection> collections = new ArrayList<>();
     private final SharedPreferences sharedPreferences;
     private final List<Callback> callbacks = new ArrayList<>();
@@ -36,6 +37,14 @@ public class TweakStore {
         }
 
         return tweakStore;
+    }
+
+    public void setEnabled(Boolean value) {
+        isEnabled = value;
+    }
+
+    public Boolean isEnabled() {
+        return isEnabled;
     }
 
     public void setValue(TweakBoolean tweakBoolean, Boolean value) {
