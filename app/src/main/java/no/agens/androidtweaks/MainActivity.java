@@ -18,7 +18,6 @@ import no.agens.androidtweakslibrary.models.Tweak;
 import no.agens.androidtweakslibrary.models.TweakBoolean;
 import no.agens.androidtweakslibrary.models.TweakStore;
 
-//import no.agens.androidtweakslibrary.Interface.TweakBinding;
 
 public class MainActivity extends AppCompatActivity {
     private static String TWEAK_STORE_NAME = "tweakStoreName";
@@ -59,18 +58,11 @@ public class MainActivity extends AppCompatActivity {
         showNotification();
     }
 
-
     @Override
     protected void onStop() {
         super.onStop();
         notificationManager.cancelAll();
     }
-
-
-//    @Override
-//    public void value(Boolean value) {
-//
-//    }
 
     private void showNotification() {
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this);
