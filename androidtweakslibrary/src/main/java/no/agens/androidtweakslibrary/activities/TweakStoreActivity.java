@@ -13,49 +13,30 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import no.agens.androidtweakslibrary.models.Collection;
-import no.agens.androidtweakslibrary.models.Tweak;
-import no.agens.androidtweakslibrary.models.TweakBoolean;
-import no.agens.androidtweakslibrary.models.TweakStore;
 import no.agens.androidtweakslibrary.R;
+import no.agens.androidtweakslibrary.models.Collection;
+import no.agens.androidtweakslibrary.models.TweakStore;
 
 
 public class TweakStoreActivity extends AppCompatActivity {
     private static String TWEAK_STORE_NAME = "tweakStoreName";
     private static String COLLECTION_ID = "collectionId";
+    private String tweakStoreName;
     private List<Collection> collections;
-    private TweakStore tweakStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tweak_store);
 
-        Tweak tweak1 = new TweakBoolean("Styling", "Theme", "Dark", false);
-        Tweak tweak2 = new TweakBoolean("Styling", "Fonts", "Big", true);
-        Tweak tweak3 = new TweakBoolean("Styling", "Fonts", "Small", false);
-        Tweak tweak4 = new TweakBoolean("Styling", "Fonts", "Medium", false);
-        Tweak tweak5 = new TweakBoolean("Styling", "Theme", "Light", false);
-        Tweak tweak6 = new TweakBoolean("Drawing", "Color", "Pink", false);
-        Tweak tweak7 = new TweakBoolean("Styling", "Theme", "Custom", false);
-        Tweak tweak8 = new TweakBoolean("Drawing", "Color", "Black", false);
-
-        List<Tweak> tweaks = new ArrayList<>();
-        tweaks.add(tweak1);
-        tweaks.add(tweak2);
-        tweaks.add(tweak3);
-        tweaks.add(tweak4);
-        tweaks.add(tweak5);
-        tweaks.add(tweak6);
-        tweaks.add(tweak7);
-        tweaks.add(tweak8);
-
-        tweakStore = TweakStore.getInstance(this, "Tweaks");
-        tweakStore.setTweaks(tweaks);
-
+        if (getIntent().getExtras() != null) {
+            tweakStoreName = getIntent().getExtras().getString(TWEAK_STORE_NAME);
+        }
 
         TextView tweakStoreNameTV = (TextView) findViewById(R.id.tweaksStore_name_textView);
-        tweakStoreNameTV.setText(tweakStore.getTweakStoreName());
+        tweakStoreNameTV.setText(tweakStoreName);
+
+        TweakStore tweakStore = TweakStore.getInstance(this, tweakStoreName);
 
         collections = tweakStore.getCollections();
         ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
@@ -78,7 +59,7 @@ public class TweakStoreActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
                 Intent intent = new Intent(getApplicationContext(), CollectionActvity.class);
-                intent.putExtra(TWEAK_STORE_NAME, tweakStore.getTweakStoreName());
+                intent.putExtra(TWEAK_STORE_NAME, tweakStoreName);
                 intent.putExtra(COLLECTION_ID, i);
                 startActivity(intent);
             }
