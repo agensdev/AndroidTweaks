@@ -8,15 +8,22 @@ import java.util.Collections;
 import java.util.List;
 
 
+import no.agens.androidtweakslibrary.interfaces.TweaksBindingBoolean;
+
 import static android.content.Context.MODE_PRIVATE;
 
 
 public class TweakStore {
     public static final String SHARED_PREFERENCES = "sharedPreferences";
     private static TweakStore tweakStore;
-    private String tweakStoreName;
-    private List<Collection> collections = new ArrayList<>();
-    private SharedPreferences sharedPreferences;
+    private final String tweakStoreName;
+    private final List<Collection> collections = new ArrayList<>();
+    private final SharedPreferences sharedPreferences;
+    private final List<Callback> callbacks = new ArrayList<>();
+
+    private interface Callback {
+        void callback();
+    }
 
     private TweakStore(Context context, String tweakStoreName) {
         this.tweakStoreName = tweakStoreName;
@@ -35,10 +42,34 @@ public class TweakStore {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(getTweakBooleanKey(tweakBoolean), value);
         editor.apply();
+
+        for (Callback callback : callbacks) {
+            callback.callback();
+        }
     }
 
     public Boolean getValue(TweakBoolean tweakBoolean) {
         return sharedPreferences.getBoolean(getTweakBooleanKey(tweakBoolean), tweakBoolean.getDefaultValue());
+    }
+
+    public void whenAnyTweakChanges(Callback callback) {
+        callbacks.add(callback);
+    }
+
+    public void bind(final TweakBoolean tweak, final TweaksBindingBoolean binding) {
+        final boolean current[] = {getValue(tweak)};
+        binding.value(current[0]);
+
+        whenAnyTweakChanges(new Callback() {
+            @Override
+            public void callback() {
+                boolean newValue = getValue(tweak);
+                if (current[0] != newValue) {
+                    current[0] = newValue;
+                    binding.value(newValue);
+                }
+            }
+        });
     }
 
     public String getTweakStoreName() {

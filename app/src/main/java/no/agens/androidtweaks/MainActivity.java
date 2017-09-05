@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import no.agens.androidtweakslibrary.activities.TweakStoreActivity;
+import no.agens.androidtweakslibrary.interfaces.TweaksBindingBoolean;
 import no.agens.androidtweakslibrary.models.Tweak;
 import no.agens.androidtweakslibrary.models.TweakBoolean;
 import no.agens.androidtweakslibrary.models.TweakStore;
@@ -41,6 +42,14 @@ public class MainActivity extends AppCompatActivity {
 
         boolean tweak1Value = tweakStore.getValue(tweak1);
         Log.d("BOB", "tweak1Value " + tweak1Value);
+
+        tweakStore.bind(tweak2, new TweaksBindingBoolean() {
+            @Override
+            public void value(Boolean value) {
+                Log.d("BOB", "tweak2Value " + value);
+            }
+        });
+
         showNotification();
     }
 
