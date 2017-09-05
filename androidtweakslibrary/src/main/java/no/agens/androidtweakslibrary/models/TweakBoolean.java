@@ -11,8 +11,4 @@ public class TweakBoolean extends Tweak {
     public Boolean getDefaultValue() {
         return defaultValue;
     }
-
-    public String getTweakType() {
-        return "Boolean";
-    }
 }

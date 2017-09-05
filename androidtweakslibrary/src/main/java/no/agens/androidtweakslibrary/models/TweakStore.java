@@ -135,7 +135,8 @@ public class TweakStore {
     }
 
     private String getTweakBooleanKey(TweakBoolean tweakBoolean) {
-        return tweakStoreName + "_" + tweakBoolean.getCollectionName() + "_" + tweakBoolean.getGroupName() + "_" + tweakBoolean.getName() + "_" + tweakBoolean.getTweakType();
+        return tweakStoreName + "_" + tweakBoolean.getCollectionName() + "_" + tweakBoolean.getGroupName() + "_"
+                + tweakBoolean.getName() + "_" + tweakBoolean.getClass();
     }
 
     private Integer getGroupIndexByName(List<Group> groups, String groupName) {
