@@ -22,7 +22,7 @@ public class TweakStore {
     private final SharedPreferences sharedPreferences;
     private final List<Callback> callbacks = new ArrayList<>();
 
-    private interface Callback {
+    public interface Callback {
         void callback();
     }
 
