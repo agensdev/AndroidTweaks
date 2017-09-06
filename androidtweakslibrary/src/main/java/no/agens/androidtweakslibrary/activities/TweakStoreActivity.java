@@ -37,7 +37,6 @@ public class TweakStoreActivity extends AppCompatActivity {
         tweakStoreNameTV.setText(tweakStoreName);
 
         TweakStore tweakStore = TweakStore.getInstance(this, tweakStoreName);
-
         collections = tweakStore.getCollections();
         ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
 
