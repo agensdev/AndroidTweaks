@@ -61,15 +61,24 @@ public class TweakStore {
         return sharedPreferences.getBoolean(getTweakBooleanKey(tweakBoolean), tweakBoolean.getDefaultValue());
     }
 
-    public void whenAnyTweakChanges(Callback callback) {
+    public Callback subscribeToAnyChange(Callback callback) {
         callbacks.add(callback);
+        return callback;
     }
 
-    public void bind(final TweakBoolean tweak, final TweaksBindingBoolean binding) {
+    public void unsubscribe(Callback callback) {
+        for (Callback cb : callbacks) {
+            if (cb == callback) {
+                callbacks.remove(cb);
+            }
+        }
+    }
+
+    public Callback bind(final TweakBoolean tweak, final TweaksBindingBoolean binding) {
         final boolean current[] = {getValue(tweak)};
         binding.value(current[0]);
 
-        whenAnyTweakChanges(new Callback() {
+        return subscribeToAnyChange(new Callback() {
             @Override
             public void callback() {
                 boolean newValue = getValue(tweak);
@@ -79,6 +88,10 @@ public class TweakStore {
                 }
             }
         });
+    }
+
+    public void unbind(Callback callback) {
+        unsubscribe(callback);
     }
 
     public String getTweakStoreName() {
