@@ -31,6 +31,10 @@ public class TweakStore {
         this.sharedPreferences = context.getSharedPreferences(SHARED_PREFERENCES + "." + tweakStoreName, MODE_PRIVATE);
     }
 
+    public static TweakStore getInstance(Context context) {
+        return getInstance(context, "Tweaks");
+    }
+
     public static TweakStore getInstance(Context context, String tweakStoreName) {
         if (tweakStore == null || !tweakStore.getTweakStoreName().equals(tweakStoreName)) {
             tweakStore = new TweakStore(context, tweakStoreName);
