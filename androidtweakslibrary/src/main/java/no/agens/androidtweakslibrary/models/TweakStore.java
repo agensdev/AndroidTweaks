@@ -14,7 +14,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 
 public class TweakStore {
-    public static final String SHARED_PREFERENCES = "sharedPreferences";
+    public static final String SHARED_PREFERENCES = "AndroidTweaks";
     private static TweakStore tweakStore;
     private final String tweakStoreName;
     private Boolean isEnabled = false;
@@ -28,7 +28,7 @@ public class TweakStore {
 
     private TweakStore(Context context, String tweakStoreName) {
         this.tweakStoreName = tweakStoreName;
-        this.sharedPreferences = context.getSharedPreferences(SHARED_PREFERENCES, MODE_PRIVATE);
+        this.sharedPreferences = context.getSharedPreferences(SHARED_PREFERENCES + "." + tweakStoreName, MODE_PRIVATE);
     }
 
     public static TweakStore getInstance(Context context, String tweakStoreName) {
@@ -135,7 +135,7 @@ public class TweakStore {
     }
 
     private String getTweakBooleanKey(TweakBoolean tweakBoolean) {
-        return tweakStoreName + "_" + tweakBoolean.getCollectionName() + "_" + tweakBoolean.getGroupName() + "_"
+        return tweakBoolean.getCollectionName() + "_" + tweakBoolean.getGroupName() + "_"
                 + tweakBoolean.getName() + "_" + tweakBoolean.getClass();
     }
 
