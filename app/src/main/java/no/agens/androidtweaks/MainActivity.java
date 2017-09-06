@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         tweakStore = TweakStore.getInstance(this, "Tweaks");
         tweakStore.setTweaks(tweaks);
+        tweakStore.setEnabled(true);
 
         boolean tweak1Value = tweakStore.getValue(tweak1);
         Log.d("BOB", "tweak1Value " + tweak1Value);

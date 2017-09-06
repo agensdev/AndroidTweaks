@@ -58,7 +58,11 @@ public class TweakStore {
     }
 
     public Boolean getValue(TweakBoolean tweakBoolean) {
-        return sharedPreferences.getBoolean(getTweakBooleanKey(tweakBoolean), tweakBoolean.getDefaultValue());
+        if (tweakStore.isEnabled) {
+            return sharedPreferences.getBoolean(getTweakBooleanKey(tweakBoolean), tweakBoolean.getDefaultValue());
+        } else {
+            return tweakBoolean.getDefaultValue();
+        }
     }
 
     public Callback subscribeToAnyChange(Callback callback) {
