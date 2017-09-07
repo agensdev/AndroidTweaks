@@ -17,7 +17,7 @@ TweakStore can be enabled in a debug build, in other build types default values 
 * Add ` compile ‘com.github.agensdev:AndroidTweaks:1.1.0’` to your application Gradle dependencies,
 * Create a new class with your public static final TweakBooleans:
 
-```
+```java
 public class MyTweaks {
 
     public static final TweakBoolean darkTheme = new TweakBoolean("Styling", "Theme", "Dark", false);
@@ -31,7 +31,7 @@ public class MyTweaks {
 
 * In your app main activity add Tweaks to the TweakStore and enable TweakStore in a debug build:
 
-```
+```java
 TweakStore tweakStore = TweakStore.getInstance(this);
 tweakStore.setTweaks(MyTweaks.tweaks);
 tweakStore.setEnabled(BuildConfig.TWEAKS_ENABLED);
@@ -39,7 +39,7 @@ tweakStore.setEnabled(BuildConfig.TWEAKS_ENABLED);
 
 * Bind Tweaks to app’s UI elements:
 
-```
+```java
 tweakStore.bind(MyTweaks.darkTheme, new TweaksBindingBoolean() {
     @Override
     public void value(Boolean value) {
@@ -50,7 +50,7 @@ tweakStore.bind(MyTweaks.darkTheme, new TweaksBindingBoolean() {
 
 * Create a notification like this:
 
-```
+```java
 private void showNotification() {
     NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this);
     
@@ -73,7 +73,7 @@ and pass it to the NotificationManager (don’t forget to cancel notification in
 
 * Make sure you're showing the notification when TweakStore is enabled:
 
-```
+```java
 if (tweakStore.isEnabled()) {
     showNotification();
 }
