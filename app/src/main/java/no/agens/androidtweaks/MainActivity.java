@@ -9,13 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import no.agens.androidtweakslibrary.activities.TweakStoreActivity;
 import no.agens.androidtweakslibrary.interfaces.TweaksBindingBoolean;
-import no.agens.androidtweakslibrary.models.Tweak;
-import no.agens.androidtweakslibrary.models.TweakBoolean;
 import no.agens.androidtweakslibrary.models.TweakStore;
 
 
@@ -29,24 +24,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TweakBoolean tweak1 = new TweakBoolean("Styling", "Theme", "Dark", false);
-        TweakBoolean tweak2 = new TweakBoolean("Styling", "Fonts", "Big", true);
-
-        List<Tweak> tweaks = new ArrayList<>();
-        tweaks.add(tweak1);
-        tweaks.add(tweak2);
-
-        tweakStore = TweakStore.getInstance(this, "Tweaks");
-        tweakStore.setTweaks(tweaks);
+        tweakStore = TweakStore.getInstance(this);
+        tweakStore.setTweaks(MyTweaks.tweaks);
         tweakStore.setEnabled(true);
 
-        boolean tweak1Value = tweakStore.getValue(tweak1);
-        Log.d("BOB", "tweak1Value " + tweak1Value);
+        boolean tweak1Value = tweakStore.getValue(MyTweaks.darkTheme);
+        Log.d("LOG", "tweak1Value " + tweak1Value);
 
-        tweakStore.bind(tweak2, new TweaksBindingBoolean() {
+        tweakStore.bind(MyTweaks.bigFonts, new TweaksBindingBoolean() {
             @Override
             public void value(Boolean value) {
-                Log.d("BOB", "tweak2Value " + value);
+                Log.d("LOG", "tweak2Value " + value);
             }
         });
 
@@ -77,7 +65,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, TweakStoreActivity.class);
         intent.putExtra(TWEAK_STORE_NAME, tweakStore.getTweakStoreName());
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        notificationBuilder.addAction(R.drawable.arrow_down_bold_box_outline_2, getResources().getString(R.string.open_tweak_store), pendingIntent);
+        notificationBuilder.addAction(R.drawable.arrow_down_bold_box_outline_2,
+                getResources().getString(R.string.open_tweak_store), pendingIntent);
 
         notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notificationManager.notify(1, notificationBuilder.build());
