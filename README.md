@@ -100,6 +100,6 @@ We were already using SwiftTweaks in our app, which is React Native based and we
 
 Your opinion is important to us. We would love to hear what you think about AndroidTweaks. Please let us know [here](https://github.com/agensdev/AndroidTweaks/issues) if you have any ideas how to improve it, we’ll appreciate it!
 
-AndroidTweaks is a first library from [Blanka Kulik](https://github.com/blashca) guided by [Håvard Fossli](https://twitter.com/hfossli) with a great help from [Arild Jacobsen](https://github.com/Ehyeh-Asher-Ehyeh).
+AndroidTweaks is a first library from [Blanka Kulik](https://github.com/blashca) guided by [Håvard Fossli](https://twitter.com/hfossli) and with a great help from [Arild Jacobsen](https://github.com/Ehyeh-Asher-Ehyeh).
 
 [<img src="http://static.agens.no/images/agens_logo_w_slogan_avenir_medium.png" width="340" />](http://agens.no/)
