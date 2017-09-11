@@ -14,7 +14,7 @@ public class MyTweaks {
     public static final TweakBoolean newOne = new TweakBoolean("Paramppppppppppppppp", "Pampam", "Piggy", false);
     public static final TweakBoolean newTwo = new TweakBoolean("Paramppp", "Pampam", "Piggy", false);
     public static final TweakBoolean newThree = new TweakBoolean("P", "Pampam", "Piggy", false);
-    public static final TweakBoolean newFour = new TweakBoolean("Parampppppppppppppppjjujjuhcxxgxxgxxgxgxxxx", "Pampam", "Piggy", true);
+    public static final TweakBoolean newFour = new TweakBoolean("Parampppppppppppppppjjujjuhcxxgxxgxxgxgxxxx", "Pampam", "Piggyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy", true);
 
     public static final List<Tweak> tweaks = new ArrayList<Tweak>() {{
         add(darkTheme);

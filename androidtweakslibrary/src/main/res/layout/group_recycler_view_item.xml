@@ -23,7 +23,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/boarderGrey"
+        android:background="@color/lightGrey"
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="16dp"/>
 
