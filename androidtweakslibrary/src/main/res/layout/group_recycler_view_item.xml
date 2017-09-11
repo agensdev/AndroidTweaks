@@ -3,28 +3,28 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/lightGrey"
     android:id="@+id/recyclerView_layout">
 
     <TextView
         android:id="@+id/group_name_textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="56dp"
+        android:minHeight="60dp"
         android:gravity="center_vertical"
-        android:padding="10dp"
-        android:textSize="16sp"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/boarderGrey"/>
+        android:padding="16dp"
+        android:textSize="14sp"/>
 
     <LinearLayout
         android:id="@+id/tweaks_linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginBottom="30dp"/>
+        android:orientation="vertical"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/boarderGrey"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="16dp"/>
 
 </LinearLayout>

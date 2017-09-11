@@ -3,15 +3,17 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:minHeight="56dp"
+    android:minHeight="60dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:paddingRight="24dp"
     android:gravity="center_vertical">
 
     <TextView
         android:id="@+id/collection_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="9"
-        android:padding="8dp"
+        android:layout_weight="1"
         android:textSize="16sp"
         android:textColor="@android:color/black"/>
 
@@ -19,8 +21,6 @@
         android:id="@+id/collection_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:padding="8dp"
-        android:text="4  >"/>
+        android:text="4"/>
 
 </LinearLayout>

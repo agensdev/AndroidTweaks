@@ -4,21 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tweaksStore_name_textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="16dp"
-        android:textSize="16sp"
-        android:textColor="@android:color/black"
-        android:textStyle="bold"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/lightGrey"/>
-
     <ListView
         android:id="@+id/tweak_store_ListView"
         android:layout_width="match_parent"

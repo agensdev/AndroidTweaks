@@ -34,7 +34,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -60,8 +59,7 @@ public class TweakStoreActivity extends AppCompatActivity {
             tweakStoreName = getIntent().getExtras().getString(TWEAK_STORE_NAME);
         }
 
-        TextView tweakStoreNameTV = (TextView) findViewById(R.id.tweaksStore_name_textView);
-        tweakStoreNameTV.setText(tweakStoreName);
+        setTitle(tweakStoreName);
 
         TweakStore tweakStore = TweakStore.getInstance(this, tweakStoreName);
         collections = tweakStore.getCollections();
@@ -70,7 +68,7 @@ public class TweakStoreActivity extends AppCompatActivity {
         for (int i = 0; i < collections.size(); i++) {
             HashMap<String, String> hashMap = new HashMap<>();
             hashMap.put("name", collections.get(i).getName());
-            hashMap.put("number", collections.get(i).getCountOfTweaks() + "   >");
+            hashMap.put("number", collections.get(i).getCountOfTweaks().toString());
             arrayList.add(hashMap);
         }
 

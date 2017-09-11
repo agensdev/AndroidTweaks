@@ -32,12 +32,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.TextView;
 
+import no.agens.androidtweakslibrary.R;
 import no.agens.androidtweakslibrary.adapter.TweaksAdapter;
 import no.agens.androidtweakslibrary.models.Collection;
 import no.agens.androidtweakslibrary.models.TweakStore;
-import no.agens.androidtweakslibrary.R;
 
 public class CollectionActvity extends AppCompatActivity {
     private static String TWEAK_STORE_NAME = "tweakStoreName";
@@ -59,8 +58,7 @@ public class CollectionActvity extends AppCompatActivity {
         TweakStore tweakStore = TweakStore.getInstance(this, tweakStoreName);
         Collection collection = tweakStore.getCollections().get(collectionId);
 
-        TextView collectionNameTV = (TextView) findViewById(R.id.collection_name_textView);
-        collectionNameTV.setText(collection.getName());
+        setTitle(collection.getName());
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.group_recyclerView);
         recyclerView.setHasFixedSize(true);

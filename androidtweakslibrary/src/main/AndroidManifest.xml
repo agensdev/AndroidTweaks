@@ -2,17 +2,20 @@
 
     package="no.agens.androidtweakslibrary">
 
-    <application android:allowBackup="true" android:label="@string/app_name"
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
         android:supportsRtl="true">
         <activity
             android:name=".activities.TweakStoreActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:screenOrientation="portrait"/>
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light"/>
 
         <activity
             android:name=".activities.CollectionActvity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"
-            android:parentActivityName=".activities.TweakStoreActivity"/>
+            android:parentActivityName=".activities.TweakStoreActivity"
+            android:theme="@style/Theme.AppCompat.Light"/>
     </application>
 </manifest>
