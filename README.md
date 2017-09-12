@@ -1,24 +1,25 @@
-# AndroidTweaks
+AndroidTweaks provides an easy way of adjusting your Android app at runtime.
 
-AndroidTweaks library provides an easy way of adjusting your Android app UI in a debug build.  
-Would you like to know instantly, if fonts in your app should be bigger or a different theme should be used, without constantly compiling the project in Android Studio? Just create some Tweaks, enable the TweakStore and you’re ready to go!
+Currently we only support activating feature flags (booleans), but we would love to see pull requests where it is possible to adjust a lot more than that at runtime. 
 
 ## Overview
 
 Create some Tweaks like this:
 
 ```java
-public static final TweakBoolean tweak = new TweakBoolean("Styling", "Fonts", "Big", false);
+public static final TweakBoolean tweak = new TweakBoolean("Styling", "Theme", "Dark", false);
 ```
 
 Tweaks are currently boolean values. Every Tweak needs to be assigned to a right group and collection, also a default value is required.  
 TweakStore can be enabled in a debug build, in other build types default values are applied.
 
+
 ## Installation
 
 Add `compile 'com.github.agensdev:AndroidTweaks:1.1.0'` to your application Gradle dependencies
 
-## Usage examples
+
+## Usage
 
 ### Create some feature flags
 
@@ -27,10 +28,10 @@ Declare your flags in a place where you can reach it from anywhere in your appli
 public class MyTweaks {
 
     public static final TweakBoolean darkTheme = new TweakBoolean("Styling", "Theme", "Dark", false);
-    public static final TweakBoolean bigFonts = new TweakBoolean("Styling", "Fonts", "Big", true);
+    public static final TweakBoolean hapticFeedback = new TweakBoolean("Feedback", "Vibration", "useHapticFeedback", true);
     public static final List<Tweak> tweaks = new ArrayList<Tweak>() {{
         add(darkTheme);
-        add(bigFonts);
+        add(hapticFeedback);
     }};
 }
 ```
@@ -122,6 +123,7 @@ TweakStore tweakStore = TweakStore.getInstance(this);
 tweakStore.setEnabled(BuildConfig.TWEAKS_ENABLED);
 ```
 
+
 ## FAQ
 
 ### Can I have multiple TweakStores?
@@ -137,11 +139,13 @@ Intent intent = new Intent(this, TweakStoreActivity.class);
 intent.putExtra(TWEAK_STORE_NAME, tweakStore.getTweakStoreName());
 ```
 
+
 ## Credits
 
 AndroidTweaks was inspired by the great [SwiftTweaks](https://github.com/Khan/SwiftTweaks) which in turn was inspired by [FBTweaks](https://github.com/facebook/Tweaks/).
 
 We were already using [SwiftTweaks](https://github.com/Khan/SwiftTweaks) in our iOS apps and we needed something similar for  Android. We tried too keep the architecture as close to [SwiftTweaks](https://github.com/Khan/SwiftTweaks) as it was possible for Android in order to provide consistent approach for both platforms.
+
 
 ## Feedback
 
