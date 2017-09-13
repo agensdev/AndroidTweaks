@@ -16,6 +16,8 @@ public static final TweakBoolean tweak = new TweakBoolean("Styling", "Theme", "D
 Tweaks are currently boolean values. Every Tweak needs to be assigned to a right group and collection, also a default value is required.  
 TweakStore can be enabled in a debug build, in other build types default values are applied.
 
+![sample app animation](sample_images.gif)
+
 
 ## Installation
 
