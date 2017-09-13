@@ -4,10 +4,12 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.NotificationCompat;
-import android.util.Log;
+import android.widget.Button;
+import android.widget.TextView;
 
 import no.agens.androidtweakslibrary.activities.TweakStoreActivity;
 import no.agens.androidtweakslibrary.interfaces.TweaksBindingBoolean;
@@ -28,23 +30,46 @@ public class MainActivity extends AppCompatActivity {
         tweakStore.setTweaks(MyTweaks.tweaks);
         tweakStore.setEnabled(true);
 
-        boolean tweak1Value = tweakStore.getValue(MyTweaks.darkTheme);
-        Log.d("LOG", "tweak1Value " + tweak1Value);
+        final Button button = (Button) findViewById(R.id.my_button);
+        final TextView textView = (TextView) findViewById(R.id.my_textView);
 
-        tweakStore.bind(MyTweaks.bigFonts, new TweaksBindingBoolean() {
+        tweakStore.bind(MyTweaks.greenButton, new TweaksBindingBoolean() {
+
             @Override
-            public void value(Boolean value) {
-                Log.d("LOG", "tweak2Value " + value);
+            public void value(boolean value) {
+                if (value)  {
+                    button.setBackgroundResource(R.drawable.button_teal);
+                    button.setTextColor(Color.BLACK);
+                } else {
+                    button.setBackgroundResource(R.drawable.button_navy);
+                }
             }
         });
 
-        showNotification();
+        tweakStore.bind(MyTweaks.uppercase, new TweaksBindingBoolean() {
+
+            @Override
+            public void value(boolean value) {
+                if (value)  {
+                    textView.setAllCaps(true);
+                } else {
+                    textView.setAllCaps(false);
+                }
+            }
+        });
+
+        if (tweakStore.isEnabled()) {
+            showNotification();
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        showNotification();
+
+        if (tweakStore.isEnabled()) {
+            showNotification();
+        }
     }
 
     @Override
