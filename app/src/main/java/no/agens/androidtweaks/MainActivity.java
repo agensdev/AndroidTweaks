@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
                     button.setTextColor(Color.BLACK);
                 } else {
                     button.setBackgroundResource(R.drawable.button_navy);
+                    button.setTextColor(Color.WHITE);
                 }
             }
         });
