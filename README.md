@@ -74,49 +74,50 @@ public class MyMainActivity extends Activity {
 private TweakStore tweakStore;
 private NotificationManager notificationManager;
 
-@Override
-protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-
-    tweakStore = TweakStore.getInstance(this);
-    tweakStore.setTweaks(BAXTweaks.allTweaks);
-    tweakStore.setEnabled(BuildConfig.TWEAKS_ENABLED);
-
-    if (tweakStore.isEnabled()) {
-        showNotification();
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    
+        tweakStore = TweakStore.getInstance(this);
+        tweakStore.setTweaks(BAXTweaks.allTweaks);
+        tweakStore.setEnabled(BuildConfig.TWEAKS_ENABLED);
+    
+        if (tweakStore.isEnabled()) {
+            showNotification();
+        }
     }
-}
-
-@Override
-protected void onStart() {
-    super.onStart();
-    if (tweakStore.isEnabled()) {
-        showNotification();
+    
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (tweakStore.isEnabled()) {
+            showNotification();
+        }
     }
-}
-
-@Override
-protected void onStop() {
-    super.onStop();
-    notificationManager.cancelAll();
-}
-
-private void showNotification() {
-    NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this);
     
-    notificationBuilder.setSmallIcon(app_icon_from_resources);
-    notificationBuilder.setContentTitle(text_from_resources);
-    notificationBuilder.setPriority(Notification.PRIORITY_MAX);
-    notificationBuilder.setWhen(0);
-    notificationBuilder.setDefaults(Notification.DEFAULT_SOUND);
+    @Override
+    protected void onStop() {
+        super.onStop();
+        notificationManager.cancelAll();
+    }
     
-    Intent intent = new Intent(this, TweakStoreActivity.class);
-    intent.putExtra(TWEAK_STORE_NAME, tweakStore.getTweakStoreName());
-    PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-    notificationBuilder.addAction(button_icon_from_resources, button_text_from_resources, pendingIntent);
-    
-    notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-    notificationManager.notify(1, notificationBuilder.build());
+    private void showNotification() {
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this);
+        
+        notificationBuilder.setSmallIcon(app_icon_from_resources);
+        notificationBuilder.setContentTitle(text_from_resources);
+        notificationBuilder.setPriority(Notification.PRIORITY_MAX);
+        notificationBuilder.setWhen(0);
+        notificationBuilder.setDefaults(Notification.DEFAULT_SOUND);
+        
+        Intent intent = new Intent(this, TweakStoreActivity.class);
+        intent.putExtra(TWEAK_STORE_NAME, tweakStore.getTweakStoreName());
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        notificationBuilder.addAction(button_icon_from_resources, button_text_from_resources, pendingIntent);
+        
+        notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.notify(1, notificationBuilder.build());
+    }
 }
 ```
 
