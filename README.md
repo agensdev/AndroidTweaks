@@ -7,14 +7,17 @@ Currently we only support activating feature flags (booleans), but we would love
 
 ## Overview
 
-Create some Tweaks like this:
+The `TweakBoolean` constructor looks like this
+```
+TweakBoolean(String collectionName, String groupName, String tweakName, boolean defaultValue)
+```
 
+Example
 ```java
 public static final TweakBoolean tweak = new TweakBoolean("Styling", "Theme", "Dark", false);
 ```
 
-Tweaks are currently boolean values. Every Tweak needs to be assigned to a right group and collection, also a default value is required.  
-TweakStore can be enabled in a debug build, in other build types default values are applied.
+Just like [SwiftTweaks](https://github.com/Khan/SwiftTweaks) every Tweak is assigned to a `Collection > Group > Name`. This hierarchy makes it easy to navigate the different tweaks. 
 
 ![sample app animation](sample_images.gif)
 
@@ -122,6 +125,8 @@ private NotificationManager notificationManager;
 
 
 ### Disabling the tweaks store
+
+This will make all tweaks ignore any persisted value and just use the fallback value as declared in the tweaks constructors.
 
 ```java
 TweakStore tweakStore = TweakStore.getInstance(this);
