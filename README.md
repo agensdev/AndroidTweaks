@@ -31,7 +31,6 @@ Add `compile 'com.github.agensdev:AndroidTweaks:1.1.0'` to your application Grad
 Declare your flags in a place where you can reach it from anywhere in your application
 ```java
 public class MyTweaks {
-
     public static final TweakBoolean darkTheme = new TweakBoolean("Styling", "Theme", "Dark", false);
     public static final TweakBoolean hapticFeedback = new TweakBoolean("Feedback", "Vibration", "useHapticFeedback", true);
     public static final List<Tweak> tweaks = new ArrayList<Tweak>() {{
