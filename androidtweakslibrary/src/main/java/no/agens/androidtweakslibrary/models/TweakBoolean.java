@@ -28,14 +28,14 @@
 package no.agens.androidtweakslibrary.models;
 
 public class TweakBoolean extends Tweak {
-    private Boolean defaultValue;
+    private boolean defaultValue;
 
-    public TweakBoolean(String collectionName, String groupName, String tweakName, Boolean defaultValue) {
+    public TweakBoolean(String collectionName, String groupName, String tweakName, boolean defaultValue) {
         super(collectionName, groupName, tweakName);
         this.defaultValue = defaultValue;
     }
 
-    public Boolean getDefaultValue() {
+    public boolean getDefaultValue() {
         return defaultValue;
     }
 }

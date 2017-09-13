@@ -44,7 +44,7 @@ public class TweakStore {
     public static final String SHARED_PREFERENCES = "AndroidTweaks";
     private static TweakStore tweakStore;
     private final String tweakStoreName;
-    private Boolean isEnabled = false;
+    private boolean isEnabled = false;
     private final List<Collection> collections = new ArrayList<>();
     private final SharedPreferences sharedPreferences;
     private final List<Callback> callbacks = new ArrayList<>();
@@ -70,15 +70,15 @@ public class TweakStore {
         return tweakStore;
     }
 
-    public void setEnabled(Boolean value) {
+    public void setEnabled(boolean value) {
         isEnabled = value;
     }
 
-    public Boolean isEnabled() {
+    public boolean isEnabled() {
         return isEnabled;
     }
 
-    public void setValue(TweakBoolean tweakBoolean, Boolean value) {
+    public void setValue(TweakBoolean tweakBoolean, boolean value) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(getTweakBooleanKey(tweakBoolean), value);
         editor.apply();
@@ -88,7 +88,7 @@ public class TweakStore {
         }
     }
 
-    public Boolean getValue(TweakBoolean tweakBoolean) {
+    public boolean getValue(TweakBoolean tweakBoolean) {
         if (tweakStore.isEnabled) {
             return sharedPreferences.getBoolean(getTweakBooleanKey(tweakBoolean), tweakBoolean.getDefaultValue());
         } else {
@@ -213,8 +213,8 @@ public class TweakStore {
         return index;
     }
 
-    private Boolean tweakExists(List<Tweak> tweaks, String tweakName) {
-        Boolean tweakExists = false;
+    private boolean tweakExists(List<Tweak> tweaks, String tweakName) {
+        boolean tweakExists = false;
 
         for (Tweak tweak : tweaks) {
             if (tweak.getName().equals(tweakName)) {

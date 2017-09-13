@@ -87,7 +87,7 @@ public class TweaksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
                 SwitchCompat switchButton = (SwitchCompat) view.findViewById(R.id.switch_button);
 
-                Boolean tweakBooleanValue = tweakStore.getValue((TweakBoolean) tweak);
+                boolean tweakBooleanValue = tweakStore.getValue((TweakBoolean) tweak);
                 switchButton.setChecked(tweakBooleanValue);
 
                 switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
