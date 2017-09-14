@@ -24,7 +24,7 @@ Just like [SwiftTweaks](https://github.com/Khan/SwiftTweaks) every Tweak is assi
 
 ## Installation
 
-Add `compile 'com.github.agensdev:AndroidTweaks:1.1.0'` to your application Gradle dependencies
+Add `compile 'com.github.agensdev:AndroidTweaks:1.1.4'` to your application Gradle dependencies
 
 
 ## Usage
