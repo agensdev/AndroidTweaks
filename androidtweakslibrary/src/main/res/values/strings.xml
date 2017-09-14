@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AndroidTweaksLibrary</string>
+
+    <string name="tweak_store_default_name">Tweaks</string>
 </resources>
