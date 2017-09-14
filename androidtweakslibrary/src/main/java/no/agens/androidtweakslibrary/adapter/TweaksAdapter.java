@@ -33,6 +33,7 @@ import android.support.v7.widget.SwitchCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.Switch;
@@ -41,12 +42,13 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import no.agens.androidtweakslibrary.R;
 import no.agens.androidtweakslibrary.models.Collection;
 import no.agens.androidtweakslibrary.models.Group;
 import no.agens.androidtweakslibrary.models.Tweak;
 import no.agens.androidtweakslibrary.models.TweakBoolean;
+import no.agens.androidtweakslibrary.models.TweakClosure;
 import no.agens.androidtweakslibrary.models.TweakStore;
-import no.agens.androidtweakslibrary.R;
 
 
 public class TweaksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -78,9 +80,9 @@ public class TweaksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         for (int i = 0; i < tweaks.size(); i++) {
             final Tweak tweak = tweaks.get(i);
             String tweakName = tweak.getName();
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
             if (tweak instanceof TweakBoolean) {
-                LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 View view = inflater.inflate(R.layout.tweak_boolean_item, null);
                 TextView tweakNameTextView = (TextView) view.findViewById(R.id.tweak_boolean_name_textView);
                 tweakNameTextView.setText(tweakName);
@@ -94,6 +96,20 @@ public class TweaksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                     @Override
                     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                         tweakStore.setValue((TweakBoolean) tweak, b);
+                    }
+                });
+
+                ((ViewHolder) holder).tweaksLinearLayout.addView(view);
+            } else if (tweak instanceof TweakClosure) {
+                View view = inflater.inflate(R.layout.tweak_closure_item, null);
+                TextView tweakNameTextView = (TextView) view.findViewById(R.id.tweak_closure_name_textView);
+                tweakNameTextView.setText(tweakName);
+
+                Button button = (Button) view.findViewById(R.id.closure_button);
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        ((TweakClosure) tweak).getCallback().callback();
                     }
                 });
 
