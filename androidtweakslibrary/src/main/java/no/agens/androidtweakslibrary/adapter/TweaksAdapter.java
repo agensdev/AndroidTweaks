@@ -36,7 +36,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -88,10 +87,8 @@ public class TweaksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 tweakNameTextView.setText(tweakName);
 
                 SwitchCompat switchButton = (SwitchCompat) view.findViewById(R.id.switch_button);
-
                 boolean tweakBooleanValue = tweakStore.getValue((TweakBoolean) tweak);
                 switchButton.setChecked(tweakBooleanValue);
-
                 switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -122,7 +119,6 @@ public class TweaksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public int getItemCount() {
         return groups.size();
     }
-
 
 
     class ViewHolder extends RecyclerView.ViewHolder {
