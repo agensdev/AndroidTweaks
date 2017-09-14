@@ -81,8 +81,8 @@ public class TweaksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
             if (tweak instanceof TweakBoolean) {
                 LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                View view = inflater.inflate(R.layout.tweak_item, null);
-                TextView tweakNameTextView = (TextView) view.findViewById(R.id.tweak_name_textView);
+                View view = inflater.inflate(R.layout.tweak_boolean_item, null);
+                TextView tweakNameTextView = (TextView) view.findViewById(R.id.tweak_boolean_name_textView);
                 tweakNameTextView.setText(tweakName);
 
                 SwitchCompat switchButton = (SwitchCompat) view.findViewById(R.id.switch_button);
