@@ -39,11 +39,6 @@ public class Collection implements Comparable<Collection> {
         this.name = name;
     }
 
-    public Collection(String name, List<Group> groups) {
-        this.name = name;
-        this.groups = groups;
-    }
-
     public String getName() {
         return name;
     }
