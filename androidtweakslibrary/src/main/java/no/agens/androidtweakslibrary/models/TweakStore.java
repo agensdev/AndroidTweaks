@@ -35,6 +35,7 @@ import java.util.Collections;
 import java.util.List;
 
 
+import no.agens.androidtweakslibrary.R;
 import no.agens.androidtweakslibrary.interfaces.TweaksBindingBoolean;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -59,7 +60,7 @@ public class TweakStore {
     }
 
     public static TweakStore getInstance(Context context) {
-        return getInstance(context, "Tweaks");
+        return getInstance(context, context.getString(R.string.tweak_store_default_name));
     }
 
     public static TweakStore getInstance(Context context, String tweakStoreName) {
