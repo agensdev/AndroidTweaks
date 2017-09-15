@@ -25,10 +25,17 @@
 //    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //    SOFTWARE.
 
-package no.agens.androidtweakslibrary.interfaces;
+package no.agens.androidtweakslibrary.models;
 
+public class TweakClosure extends Tweak {
+    private TweakStore.Callback callback;
 
+    public TweakClosure(String collectionName, String groupName, String tweakName, TweakStore.Callback callback) {
+        super(collectionName, groupName, tweakName);
+        this.callback = callback;
+    }
 
-public interface TweaksBindingBoolean {
-    void value(boolean value);
+    public TweakStore.Callback getCallback() {
+        return callback;
+    }
 }

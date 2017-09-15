@@ -102,7 +102,7 @@ public class TweakStore {
         return callback;
     }
 
-    public void unsubscribe(Callback callback) {
+    private void unsubscribe(Callback callback) {
         for (Callback cb : callbacks) {
             if (cb == callback) {
                 callbacks.remove(cb);
