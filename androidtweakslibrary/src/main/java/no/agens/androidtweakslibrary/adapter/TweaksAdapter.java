@@ -110,10 +110,10 @@ public class TweaksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
             if (tweak instanceof TweakBoolean) {
                 View view = inflater.inflate(R.layout.tweak_boolean_item, null);
-                TextView tweakNameTextView = (TextView) view.findViewById(R.id.tweak_boolean_name_textView);
+                TextView tweakNameTextView = view.findViewById(R.id.tweak_boolean_name_textView);
                 tweakNameTextView.setText(tweakName);
 
-                SwitchCompat switchButton = (SwitchCompat) view.findViewById(R.id.switch_button);
+                SwitchCompat switchButton = view.findViewById(R.id.switch_button);
                 boolean tweakBooleanValue = tweakStore.getValue((TweakBoolean) tweak);
                 switchButton.setChecked(tweakBooleanValue);
                 switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -126,10 +126,10 @@ public class TweaksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 ((ViewHolder) holder).tweaksLinearLayout.addView(view);
             } else if (tweak instanceof TweakClosure) {
                 View view = inflater.inflate(R.layout.tweak_closure_item, null);
-                TextView tweakNameTextView = (TextView) view.findViewById(R.id.tweak_closure_name_textView);
+                TextView tweakNameTextView = view.findViewById(R.id.tweak_closure_name_textView);
                 tweakNameTextView.setText(tweakName);
 
-                Button button = (Button) view.findViewById(R.id.closure_button);
+                Button button = view.findViewById(R.id.closure_button);
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -155,8 +155,8 @@ public class TweaksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         public ViewHolder(View itemView) {
             super(itemView);
-            tweaksLinearLayout = (LinearLayout) itemView.findViewById(R.id.tweaks_linearLayout);
-            groupNameTextView = (TextView) itemView.findViewById(R.id.group_name_textView);
+            tweaksLinearLayout = itemView.findViewById(R.id.tweaks_linearLayout);
+            groupNameTextView = itemView.findViewById(R.id.group_name_textView);
             imageButton = itemView.findViewById(R.id.minimize_button);
         }
     }
