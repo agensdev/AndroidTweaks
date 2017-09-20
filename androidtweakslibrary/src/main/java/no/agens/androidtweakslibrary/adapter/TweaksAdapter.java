@@ -27,7 +27,9 @@
 
 package no.agens.androidtweakslibrary.adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SwitchCompat;
 import android.view.LayoutInflater;
@@ -35,6 +37,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -48,17 +51,25 @@ import no.agens.androidtweakslibrary.models.Tweak;
 import no.agens.androidtweakslibrary.models.TweakBoolean;
 import no.agens.androidtweakslibrary.models.TweakClosure;
 import no.agens.androidtweakslibrary.models.TweakStore;
+import no.agens.androidtweakslibrary.services.DrawerService;
 
 
 public class TweaksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    private static String TWEAK_STORE_NAME = "tweakStoreName";
+    private static String COLLECTION_NAME = "collectionName";
+    private static String GROUP_NAME = "groupName";
     private Context context;
     private List<Group> groups = new ArrayList<>();
+    private String collectionName;
     private TweakStore tweakStore;
+    private boolean isPermissionGranted;
 
-    public TweaksAdapter(Context context, Collection collection, TweakStore tweakStore) {
+    public TweaksAdapter(Context context, Collection collection, TweakStore tweakStore, boolean isPermissionGranted) {
         this.context = context;
         this.groups = collection.getGroups();
+        this.collectionName = collection.getName();
         this.tweakStore = tweakStore;
+        this.isPermissionGranted = isPermissionGranted;
     }
 
     @Override
@@ -69,8 +80,24 @@ public class TweaksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        String groupName = groups.get(position).getName();
+        final String groupName = groups.get(position).getName();
         ((ViewHolder) holder).groupNameTextView.setText(groupName);
+
+        if (isPermissionGranted) {
+            ((ViewHolder) holder).imageButton.setVisibility(View.VISIBLE);
+            ((ViewHolder) holder).imageButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, DrawerService.class);
+                    intent.putExtra(TWEAK_STORE_NAME, tweakStore.getTweakStoreName());
+                    intent.putExtra(COLLECTION_NAME, collectionName);
+                    intent.putExtra(GROUP_NAME, groupName);
+                    context.startService(intent);
+                    Activity activity = (Activity) context;
+                    activity.finish();
+                }
+            });
+        }
 
         List<Tweak> tweaks = groups.get(position).getTweaks();
 
@@ -124,11 +151,13 @@ public class TweaksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     class ViewHolder extends RecyclerView.ViewHolder {
         LinearLayout tweaksLinearLayout;
         TextView groupNameTextView;
+        ImageButton imageButton;
 
         public ViewHolder(View itemView) {
             super(itemView);
             tweaksLinearLayout = (LinearLayout) itemView.findViewById(R.id.tweaks_linearLayout);
             groupNameTextView = (TextView) itemView.findViewById(R.id.group_name_textView);
+            imageButton = itemView.findViewById(R.id.minimize_button);
         }
     }
 }

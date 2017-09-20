@@ -41,6 +41,8 @@ import no.agens.androidtweakslibrary.models.TweakStore;
 public class CollectionActvity extends AppCompatActivity {
     private static String TWEAK_STORE_NAME = "tweakStoreName";
     private static String COLLECTION_ID = "collectionId";
+    private static String PERMISSION = "permission";
+    private boolean isPermissionGranted = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,7 @@ public class CollectionActvity extends AppCompatActivity {
         if (getIntent().getExtras() != null) {
             tweakStoreName = getIntent().getExtras().getString(TWEAK_STORE_NAME);
             collectionId = getIntent().getExtras().getInt(COLLECTION_ID);
+            isPermissionGranted = getIntent().getExtras().getBoolean(PERMISSION);
         }
 
         TweakStore tweakStore = TweakStore.getInstance(this, tweakStoreName);
@@ -64,7 +67,7 @@ public class CollectionActvity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerView.Adapter adapter = new TweaksAdapter(this, collection, tweakStore);
+        RecyclerView.Adapter adapter = new TweaksAdapter(this, collection, tweakStore, isPermissionGranted);
         recyclerView.setAdapter(adapter);
     }
 }

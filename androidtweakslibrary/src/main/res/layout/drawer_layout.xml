@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <View
+        android:layout_width="20dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/drawer_pull"/>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingRight="8dp"
+        android:paddingLeft="8dp"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:minHeight="60dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <ImageButton
+                android:id="@+id/drawer_close_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@android:color/transparent"
+                android:src="@drawable/close_icon"
+                android:alpha="0.5"/>
+
+            <TextView
+                android:id="@+id/drawer_group_name_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="16dp"
+                android:layout_gravity="center_vertical"
+                android:textSize="14sp"
+                android:textColor="@color/darkerGray"/>
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/drawer_group_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="2dp"
+            android:scrollbars="vertical"/>
+
+    </LinearLayout>
+</LinearLayout>

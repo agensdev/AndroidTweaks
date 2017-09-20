@@ -17,5 +17,10 @@
             android:screenOrientation="portrait"
             android:parentActivityName=".activities.TweakStoreActivity"
             android:theme="@style/Theme.AppCompat.Light"/>
+
+        <service
+            android:name=".services.DrawerService"
+            android:enabled="true"
+            android:permission="android.permission.SYSTEM_ALERT_WINDOW"/>
     </application>
 </manifest>

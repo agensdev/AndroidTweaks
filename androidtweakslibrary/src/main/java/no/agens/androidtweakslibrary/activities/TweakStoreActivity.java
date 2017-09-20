@@ -47,8 +47,10 @@ import no.agens.androidtweakslibrary.models.TweakStore;
 public class TweakStoreActivity extends AppCompatActivity {
     private static String TWEAK_STORE_NAME = "tweakStoreName";
     private static String COLLECTION_ID = "collectionId";
+    private static String PERMISSION = "permission";
     private String tweakStoreName;
     private List<Collection> collections;
+    private boolean isPermissionGranted;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,7 @@ public class TweakStoreActivity extends AppCompatActivity {
 
         if (getIntent().getExtras() != null) {
             tweakStoreName = getIntent().getExtras().getString(TWEAK_STORE_NAME);
+            isPermissionGranted = getIntent().getExtras().getBoolean(PERMISSION);
         }
 
         setTitle(tweakStoreName);
@@ -85,7 +88,9 @@ public class TweakStoreActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), CollectionActvity.class);
                 intent.putExtra(TWEAK_STORE_NAME, tweakStoreName);
                 intent.putExtra(COLLECTION_ID, i);
+                intent.putExtra(PERMISSION, isPermissionGranted);
                 startActivity(intent);
+                finish();
             }
         });
     }
