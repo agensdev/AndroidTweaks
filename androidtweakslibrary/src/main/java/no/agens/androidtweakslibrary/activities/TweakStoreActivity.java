@@ -78,7 +78,7 @@ public class TweakStoreActivity extends AppCompatActivity {
         String[] from = {"name", "number"};
         int[] to = {R.id.collection_name, R.id.collection_count};
         SimpleAdapter simpleAdapter = new SimpleAdapter(this, arrayList, R.layout.tweak_store_list_item, from, to);
-        ListView tweakStoreListView = (ListView) findViewById(R.id.tweak_store_ListView);
+        ListView tweakStoreListView = (ListView) findViewById(R.id.tweak_store_listView);
         tweakStoreListView.setAdapter(simpleAdapter);
 
         tweakStoreListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

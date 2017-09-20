@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <ListView
-        android:id="@+id/tweak_store_ListView"
+        android:id="@+id/tweak_store_listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@color/lightGrey"
