@@ -5,26 +5,46 @@
     android:layout_height="wrap_content"
     android:id="@+id/recyclerView_layout">
 
-    <TextView
-        android:id="@+id/group_name_textView"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:minHeight="60dp"
-        android:gravity="center_vertical"
-        android:padding="16dp"
-        android:textSize="14sp"/>
+        android:paddingTop="8dp">
+
+        <TextView
+            android:id="@+id/group_name_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:paddingRight="16dp"
+            android:textSize="14sp"/>
+
+        <ImageButton
+            android:id="@+id/minimize_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:padding="16dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/minimize_icon"
+            android:alpha="0.5"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lightGray"
+        android:layout_marginLeft="16dp"/>
 
     <LinearLayout
         android:id="@+id/tweaks_linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/lightGrey"
-        android:layout_marginLeft="16dp"
+        android:orientation="vertical"
         android:layout_marginBottom="16dp"/>
 
 </LinearLayout>

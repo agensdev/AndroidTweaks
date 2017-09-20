@@ -6,7 +6,6 @@
     android:minHeight="60dp"
     android:paddingTop="8dp"
     android:paddingBottom="8dp"
-    android:paddingRight="24dp"
     android:gravity="center_vertical">
 
     <TextView
