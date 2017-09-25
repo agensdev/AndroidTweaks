@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:layout_gravity="center"
         android:text="Some Text Here"
         android:textSize="24sp"/>
@@ -21,9 +21,19 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:padding="16dp"
-        android:layout_marginTop="50dp"
-        android:text="My Button"
+        android:layout_marginTop="30dp"
+        android:text="Button"
         android:textColor="@android:color/white"
         android:background="@drawable/button_navy"/>
+
+    <TextView
+        android:id="@+id/my_textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:text="0"
+        android:textSize="24sp"/>
 
 </LinearLayout>

@@ -28,7 +28,6 @@
 package no.agens.androidtweakslibrary.interfaces;
 
 
-
 public interface TweaksBindingBoolean {
     void value(boolean value);
 }

@@ -5,22 +5,13 @@
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
-        android:supportsRtl="true">
-        <activity
-            android:name=".activities.TweakStoreActivity"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light"/>
-
-        <activity
-            android:name=".activities.CollectionActvity"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".activities.TweakStoreActivity"
-            android:theme="@style/Theme.AppCompat.Light"/>
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light">
 
         <service
-            android:name=".services.DrawerService"
+            android:name=".services.TweakStoreService"
             android:enabled="true"
             android:permission="android.permission.SYSTEM_ALERT_WINDOW"/>
+
     </application>
 </manifest>

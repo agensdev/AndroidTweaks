@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <View
+        android:id="@+id/tweak_store_drag_view"
+        android:layout_width="20dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_green_light"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@android:color/white">
+
+        <TextView
+            android:id="@+id/tweak_store_name_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="56dp"
+            android:paddingLeft="16dp"
+            android:background="@color/lightGray"
+            android:gravity="center_vertical"
+            android:elevation="4dp"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"/>
+
+        <ListView
+            android:id="@+id/tweak_store_listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="16dp"
+            android:divider="@color/lightGray"
+            android:dividerHeight="1dp"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -2,18 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:layout_marginLeft="10dp"
     android:orientation="horizontal">
 
     <View
+        android:id="@+id/group_drag_view"
         android:layout_width="20dp"
         android:layout_height="match_parent"
-        android:background="@drawable/drawer_pull"/>
+        android:background="@android:color/holo_green_light"/>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:orientation="vertical"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         android:paddingRight="8dp"
         android:paddingLeft="8dp"
         android:background="@android:color/white">
@@ -22,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:minHeight="60dp"
+            android:minHeight="56dp"
             android:paddingTop="8dp"
             android:paddingBottom="8dp">
 
@@ -50,7 +53,7 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/drawer_group_recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:paddingLeft="2dp"
             android:scrollbars="vertical"/>
 

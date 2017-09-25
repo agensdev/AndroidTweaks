@@ -9,7 +9,7 @@
     </style>
     <style name="Switch" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- active thumb & track color (30% transparency) -->
-        <item name="colorControlActivated">@color/indigo</item>
+        <item name="colorControlActivated">@android:color/holo_green_light</item>
 
         <!-- inactive thumb color -->
         <item name="colorSwitchThumbNormal">@color/gray</item>

@@ -1,4 +1,4 @@
-package no.agens.androidtweakslibrary.adapter;
+package no.agens.androidtweakslibrary.adapters;
 
 
 import android.content.Context;
@@ -22,12 +22,12 @@ import no.agens.androidtweakslibrary.models.TweakBoolean;
 import no.agens.androidtweakslibrary.models.TweakClosure;
 import no.agens.androidtweakslibrary.models.TweakStore;
 
-public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class GroupAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context context;
     private List<Tweak> tweaks = new ArrayList<>();
     private TweakStore tweakStore;
 
-    public DrawerAdapter(Context context, Group group, TweakStore tweakStore) {
+    public GroupAdapter(Context context, Group group, TweakStore tweakStore) {
         this.context = context;
         this.tweaks = group.getTweaks();
         this.tweakStore = tweakStore;
@@ -35,13 +35,13 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.drawer_recycler_view_item, parent, false);
-        return new DrawerAdapter.ViewHolder(v);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.group_drawer_recycler_view_item, parent, false);
+        return new GroupAdapter.ViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-        ((DrawerAdapter.ViewHolder) holder).drawerTweaksLinearLayout.removeAllViews();
+        ((GroupAdapter.ViewHolder) holder).drawerTweaksLinearLayout.removeAllViews();
 
         for (int i = 0; i < tweaks.size(); i++) {
             final Tweak tweak = tweaks.get(i);
@@ -63,7 +63,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                     }
                 });
 
-                ((DrawerAdapter.ViewHolder) holder).drawerTweaksLinearLayout.addView(view);
+                ((GroupAdapter.ViewHolder) holder).drawerTweaksLinearLayout.addView(view);
             } else if (tweak instanceof TweakClosure) {
                 View view = inflater.inflate(R.layout.tweak_closure_item, null);
                 TextView tweakNameTextView = view.findViewById(R.id.tweak_closure_name_textView);
@@ -77,7 +77,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                     }
                 });
 
-                ((DrawerAdapter.ViewHolder) holder).drawerTweaksLinearLayout.addView(view);
+                ((GroupAdapter.ViewHolder) holder).drawerTweaksLinearLayout.addView(view);
             }
         }
     }
@@ -93,7 +93,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         public ViewHolder(View itemView) {
             super(itemView);
-            drawerTweaksLinearLayout = itemView.findViewById(R.id.drawer_tweaks_linearLayout);
+            drawerTweaksLinearLayout = itemView.findViewById(R.id.group_drawer_tweaks_linearLayout);
         }
     }
 }
