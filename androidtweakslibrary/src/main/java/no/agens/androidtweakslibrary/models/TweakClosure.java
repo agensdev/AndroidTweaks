@@ -28,10 +28,16 @@
 package no.agens.androidtweakslibrary.models;
 
 public class TweakClosure extends Tweak {
-    private TweakStore.Callback callback;
+    private TweakStore.Callback callback = new TweakStore.Callback() {
+        @Override
+        public void callback() {}
+    };
 
-    public TweakClosure(String collectionName, String groupName, String tweakName, TweakStore.Callback callback) {
+    public TweakClosure(String collectionName, String groupName, String tweakName) {
         super(collectionName, groupName, tweakName);
+    }
+
+    public void setCallback(TweakStore.Callback callback) {
         this.callback = callback;
     }
 

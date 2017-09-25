@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         final Button button = (Button) findViewById(R.id.my_button);
         final TextView textView = (TextView) findViewById(R.id.my_textView);
+        final TextView textView2 = (TextView) findViewById(R.id.my_textView2);
 
         tweakStore.bind(MyTweaks.greenButton, new TweaksBindingBoolean() {
 
@@ -66,6 +67,27 @@ public class MainActivity extends AppCompatActivity {
         });
 
         intent = new Intent(this, DrawerService.class);
+        MyTweaks.addUser.setCallback(new TweakStore.Callback() {
+            @Override
+            public void callback() {
+                count += 1;
+                textView2.setText("" + count);
+            }
+        });
+
+        MyTweaks.deleteUserData.setCallback(new TweakStore.Callback() {
+            @Override
+            public void callback() {
+                count -= 1;
+
+                if (count >= 0) {
+                    textView2.setText("" + count);
+                } else {
+                    count = 0;
+                    textView2.setText("" + count);
+                }
+            }
+        });
 
         if (tweakStore.isEnabled()) {
             Permission.checkPermission(this);
