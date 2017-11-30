@@ -18,9 +18,10 @@ import no.agens.androidtweakslibrary.models.TweakStore;
 import no.agens.androidtweakslibrary.services.TweakStoreService;
 
 public class TweakStorePresenter {
+    private static View view;
 
     public static View createTweakStoreView(final Context context, final TweakStore tweakStore) {
-        View view = View.inflate(context, R.layout.tweak_store_layout, null);
+        view = View.inflate(context, R.layout.tweak_store_layout, null);
 
         final TextView textView = view.findViewById(R.id.tweak_store_name_textView);
         textView.setText(tweakStore.getTweakStoreName());
@@ -50,6 +51,10 @@ public class TweakStorePresenter {
             }
         });
 
+        return view;
+    }
+
+    public static View getView() {
         return view;
     }
 }

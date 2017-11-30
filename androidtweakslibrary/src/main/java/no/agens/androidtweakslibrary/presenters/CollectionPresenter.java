@@ -15,9 +15,10 @@ import no.agens.androidtweakslibrary.models.TweakStore;
 import no.agens.androidtweakslibrary.services.TweakStoreService;
 
 public class CollectionPresenter {
+    private static View view;
 
     public static View createCollectionView(final Context context, Collection collection, final TweakStore tweakStore) {
-        View view = View.inflate(context, R.layout.collection_layout, null);
+        view = View.inflate(context, R.layout.collection_layout, null);
 
         TextView textView = view.findViewById(R.id.collection_name_textView);
         textView.setText(collection.getName());
@@ -38,6 +39,10 @@ public class CollectionPresenter {
         RecyclerView.Adapter adapter = new TweaksAdapter(context, collection, tweakStore);
         recyclerView.setAdapter(adapter);
 
+        return view;
+    }
+
+    public static View getView() {
         return view;
     }
  }

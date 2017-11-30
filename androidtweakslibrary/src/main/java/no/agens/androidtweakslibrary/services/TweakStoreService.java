@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.graphics.Point;
 import android.os.IBinder;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 
+import no.agens.androidtweakslibrary.R;
 import no.agens.androidtweakslibrary.models.TweakStore;
 import no.agens.androidtweakslibrary.presenters.GroupPresenter;
 import no.agens.androidtweakslibrary.presenters.TweakStorePresenter;
@@ -30,6 +32,7 @@ public class TweakStoreService extends Service implements View.OnTouchListener, 
     private ValueAnimator animator = new ValueAnimator();
     private float actionDownX;
     private String tweakStoreName;
+    private static View drawerPull;
 
     @Override
     public void onCreate() {
@@ -61,6 +64,7 @@ public class TweakStoreService extends Service implements View.OnTouchListener, 
         TweakStore tweakStore = TweakStore.getInstance(this, tweakStoreName);
         View view = TweakStorePresenter.createTweakStoreView(this, tweakStore);
         rootView.addView(view);
+        drawerPull = view.findViewById(R.id.drag_view);
 
         return super.onStartCommand(intent, flags, startId);
     }
@@ -125,12 +129,14 @@ public class TweakStoreService extends Service implements View.OnTouchListener, 
     public void onAnimationUpdate(ValueAnimator animation) {
         params.x = (Integer) animation.getAnimatedValue();
         windowManager.updateViewLayout(rootView, params);
+        drawerPull.setAlpha((float) (-displaySize.x - params.x) / -displaySize.x);
     }
 
     public static void replaceView(View newView) {
         rootView.removeAllViews();
         adjustViewSize(newView);
         rootView.addView(newView);
+        drawerPull = newView.findViewById(R.id.drag_view);
     }
 
     private static void adjustViewSize(View view) {

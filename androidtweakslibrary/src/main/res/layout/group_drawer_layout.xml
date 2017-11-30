@@ -8,7 +8,7 @@
     android:orientation="horizontal">
 
     <View
-        android:id="@+id/group_drag_view"
+        android:id="@+id/drag_view"
         android:layout_width="20dp"
         android:layout_height="match_parent"
         android:background="@android:color/holo_green_light"/>
