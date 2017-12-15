@@ -73,13 +73,13 @@ public class TweaksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
         final String groupName = groups.get(position).getName();
         ((ViewHolder) holder).groupNameTextView.setText(groupName);
         ((ViewHolder) holder).imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                View groupView = GroupPresenter.createGroupView(context, groups.get(position), collection, tweakStore);
+                View groupView = GroupPresenter.createGroupView(context, groups.get(holder.getAdapterPosition()), collection, tweakStore);
                 TweakStoreService.replaceView(groupView);
             }
         });
